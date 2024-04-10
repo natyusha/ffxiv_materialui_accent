@@ -16,7 +16,7 @@ namespace MaterialUI {
 		private MaterialUI main;
 		
 		private bool openOnStart;
-		private bool accentOnly;
+		// private bool accentOnly;
 		private Vector3 colorAccent;
 		private string repoInput = "";
 		public Vector3[] colorOptions;
@@ -27,7 +27,7 @@ namespace MaterialUI {
 			noticeText = new List<string>();
 			
 			openOnStart = main.config.openOnStart;
-			accentOnly = main.config.accentOnly;
+			// accentOnly = main.config.accentOnly;
 			colorAccent = main.config.color;
 			colorOptions = new Vector3[0];
 			
@@ -74,7 +74,7 @@ namespace MaterialUI {
 			ImGui.Begin("Material UI Settings", ref settingsVisible);
 			
 			if(noticeVisible) {
-				ImGui.BeginChild("MaterialUINotice", new Vector2(ImGui.GetWindowContentRegionWidth(), ImGui.GetWindowHeight() - 60));
+				ImGui.BeginChild("MaterialUINotice", new Vector2(ImGui.GetWindowContentRegionMax().X, ImGui.GetWindowHeight() - 60));
 				foreach(string text in noticeText)
 					ImGui.Text(text);
 				ImGui.EndChild();
@@ -114,9 +114,9 @@ namespace MaterialUI {
 					
 					ImGui.Separator();
 					
-					ImGui.Checkbox("Colors Only", ref accentOnly);
-					if(ImGui.IsItemHovered())
-						ImGui.SetTooltip("Only installs the recolored textures instead of everything. For those that have a frankenstein setup, using both TexTools and Penumbra");
+					// ImGui.Checkbox("Colors Only", ref accentOnly);
+					// if(ImGui.IsItemHovered())
+					// 	ImGui.SetTooltip("Only installs the recolored textures instead of everything. For those that have a frankenstein setup, using both TexTools and Penumbra");
 						
 					ImGui.Separator();
 					
@@ -128,7 +128,7 @@ namespace MaterialUI {
 					if(ImGui.Button("Apply")) {
 						main.config.firstTime = false;
 						main.config.color = colorAccent;
-						main.config.accentOnly = accentOnly;
+						// main.config.accentOnly = accentOnly;
 						for(int i = 0; i < colorOptions.Length; i++) {
 							main.config.colorOptions[main.updater.mods["base"].options.colorOptions[i].id] = colorOptions[i];
 						}
@@ -222,7 +222,7 @@ namespace MaterialUI {
 							
 							if(preview != null) {
 								if(ImGui.TreeNode("Preview")) {
-									float scale = (ImGui.GetWindowContentRegionWidth() - 45) / preview.Width;
+									float scale = (ImGui.GetWindowContentRegionMax().X - 45) / preview.Width;
 									
 									ImGui.Image(preview.ImGuiHandle, new Vector2(preview.Width * scale, preview.Height * scale));
 									ImGui.TreePop();
@@ -316,7 +316,7 @@ namespace MaterialUI {
 						ImGui.PopID();
 						ImGui.PushID("localPathInput");
 						ImGui.SameLine();
-						ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionWidth());
+						ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionMax().X);
 						if(ImGui.InputText("", ref main.config.localPath, 200))
 							main.pluginInterface.SavePluginConfig(main.config);
 						ImGui.PopID();
@@ -350,7 +350,7 @@ namespace MaterialUI {
 							main.pluginInterface.SavePluginConfig(main.config);
 						}
 						ImGui.SameLine();
-						ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionWidth());
+						ImGui.SetNextItemWidth(ImGui.GetWindowContentRegionMax().X);
 						ImGui.InputText("", ref repoInput, 200);
 					}
 					

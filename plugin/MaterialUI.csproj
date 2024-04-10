@@ -3,19 +3,18 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<Authors>Sevii</Authors>
-		<Version>1.4.7</Version>
+		<Version>1.4.12</Version>
 	</PropertyGroup>
 	
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net7.0-windows</TargetFramework>
 		<Platforms>x64</Platforms>
-		<Configuration>Release</Configuration>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<OutputPath>$(AppData)/XIVLauncher/devPlugins/MaterialUI/</OutputPath>
+		<!-- <OutputPath>$(AppData)/XIVLauncher/devPlugins/MaterialUI/</OutputPath> -->
 	</PropertyGroup>
 	
 	<PropertyGroup>
